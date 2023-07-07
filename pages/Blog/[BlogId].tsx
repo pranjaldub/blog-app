@@ -31,7 +31,7 @@ export const getStaticProps : GetStaticProps= async (context) => {
     props: { post },
   };
 };
-const Blog :FC<{post:blogInterface}> = ({ post }) => {
+const Blog :FC<{post:blogInterface[]}> = ({ post }) => {
     //console.log("inside post" , post)
     const data = `<html>
     <head>

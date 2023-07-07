@@ -14,7 +14,7 @@ const BlogCard : FC<{title:string , summary:string , id:string , setBlogs:(blogs
       let filteredBlogs = blogs.filter((blog)=>blog.id!==id)
       setBlogs(filteredBlogs)
   }
-  var parts =publication_date.split('-');
+  var parts:any[] =publication_date.split('-');
   var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
   console.log(mydate.toDateString())
   return (
