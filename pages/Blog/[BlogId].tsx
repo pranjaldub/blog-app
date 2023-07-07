@@ -20,7 +20,8 @@ export const getStaticPaths : GetStaticPaths = async () => {
     };
   };
  
-  //server side rendering function to get single post 
+  //static site generation function to get single post ,  the page fetches data once during build-time . 
+  //Incremental static generation with revalidate property is not used because post are completely static and wont be edited anytime.
 export const getStaticProps : GetStaticProps= async (context) => {
     const {BlogId} = context.params as IParams
     
