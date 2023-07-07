@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import {Chip} from "@mui/material"
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useRouter } from 'next/router'
-
+import DeleteIcon from '@mui/icons-material/Delete';
 //interface representing blog structure
 interface blogInterface  {id:string , summary:string , title:string , publication_date:string , image:string , author:string,content:string}
 
@@ -49,7 +49,7 @@ const BlogCard : FC<{title:string , summary:string , id:string , setBlogs:(blogs
       </CardActionArea>
       <CardActions>
         <Button size="small" color="error" onClick={()=>{deleteHandler(id)}}>
-          Delete
+        <DeleteIcon/>
         </Button>
       </CardActions>
     </Card>
