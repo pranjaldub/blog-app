@@ -1,3 +1,4 @@
+//array of blog objects
 export const blogs :{ id: string, title: string ,publication_date:string , author:string , summary:string , content:string , image:string }[]  = [
   {
     id: "1",
@@ -91,7 +92,7 @@ export const blogs :{ id: string, title: string ,publication_date:string , autho
   }
   ]
   
-
+//function to get single blog from id
   export function getSinglePost(id:string) : any{
    
       let blog = blogs.filter(blog => blog.id===id)

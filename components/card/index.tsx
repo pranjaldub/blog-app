@@ -7,13 +7,21 @@ import Typography from '@mui/material/Typography';
 import {Chip} from "@mui/material"
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useRouter } from 'next/router'
+
+//interface representing blog structure
 interface blogInterface  {id:string , summary:string , title:string , publication_date:string , image:string , author:string,content:string}
+
+//card component to individual blogs
 const BlogCard : FC<{title:string , summary:string , id:string , setBlogs:(blogs:blogInterface[])=>void , blogs:blogInterface[],image:string , author:string , publication_date:string}>  = ({title , summary , id , setBlogs , blogs , image , author ,publication_date}) : ReactElement => {
   const router = useRouter()
+
+  //function to handle delete functionality
   function deleteHandler(id:string):void{
-      let filteredBlogs = blogs.filter((blog)=>blog.id!==id)
+      let filteredBlogs = blogs.filter((blog)=>blog.id!==id) //filtering out blogs that do not match the id
       setBlogs(filteredBlogs)
   }
+
+  //constructing date string from string
   var parts:any[] =publication_date.split('-');
   var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
   console.log(mydate.toDateString())

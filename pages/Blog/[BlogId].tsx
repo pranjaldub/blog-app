@@ -1,27 +1,26 @@
 import React, { FC } from 'react'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, } from 'next'
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-
 import { blogs ,  getSinglePost} from '../../data/blogs'
 import { ParsedUrlQuery } from 'querystring'
 import Typography from '@mui/material/Typography';
 interface blogInterface  {id:string , summary:string , title:string , publication_date:string , image:string , author:string,content:string}
 
+//to define type of parsed query or URL
 interface IParams extends ParsedUrlQuery {
     BlogId: string
 }
  
-
+//function to dynamically generate path for each blog detail page
 export const getStaticPaths : GetStaticPaths = async () => {
-    const paths = blogs.map(( blog:blogInterface ) => ({ params: { BlogId:blog.id.toString()} }));
+    const paths = blogs.map(( blog:blogInterface ) => ({ params: { BlogId:blog.id.toString()} })); //getting all the paths 
  
     return {
       paths,
-      fallback: false,
+      fallback: false, //will give 404 if not found 
     };
   };
  
+  //server side rendering function to get single post 
 export const getStaticProps : GetStaticProps= async (context) => {
     const {BlogId} = context.params as IParams
     
@@ -31,6 +30,8 @@ export const getStaticProps : GetStaticProps= async (context) => {
     props: { post },
   };
 };
+
+//component to render blog details => /Blog/id
 const Blog :FC<{post:blogInterface[]}> = ({ post }) => {
     //console.log("inside post" , post)
     const data = `<html>
